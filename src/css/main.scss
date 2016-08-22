@@ -1,0 +1,120 @@
+// Import vendor Eric Meyer's CSS reset v2
+@import 'vendor/reset';
+
+// Just something to look at when you ramp up a project!
+// Nothing here is functional to the boiler-pie-plate
+// Srsly, delete all of this unless you want to keep some moving balls.
+
+$square-dimension: 5vh;
+
+body {
+  font-family: Consolas, monospace;
+  background-image: url('../img/sample_background.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.balls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+@keyframes going-up {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes going-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+$balls: (
+  1: (
+    color: #f7cac9,
+    duration: 1800ms
+  ),
+  2: (
+    color: #f7786b,
+    duration: 1100ms
+  ),
+  3: (
+    color: #91a8d0,
+    duration: 1300ms
+  ),
+  4: (
+    color: #034f84,
+    duration: 1700ms
+  ),
+  5: (
+    color: #fae03c,
+    duration: 1000ms
+  ),
+  6: (
+    color: #98ddde,
+    duration: 1100ms
+  ),
+  7: (
+    color: #9896a4,
+    duration: 1600ms
+  ),
+  8: (
+    color: #dd4132,
+    duration: 1400ms
+  ),
+  9: (
+    color: #b18f6a,
+    duration: 1200ms
+  ),
+  10: (
+    color: #79c753,
+    duration: 1000ms
+  )
+);
+
+.ball {
+  position: relative;
+  width: $square-dimension;
+  height: $square-dimension;
+  border-radius: 50%;
+  background: white;
+
+  & + & {
+    margin-left: $square-dimension;
+  }
+}
+
+@each $item, $setting in $balls {
+  $animation-name: if($item % 2 == 0, going-up, going-down);
+
+  .ball:nth-child(#{$item}) {
+    background: map-get($setting, color);
+    animation: $animation-name map-get($setting, duration) infinite ease-in-out;
+  }
+}
+
+.ball-letter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: white;
+}

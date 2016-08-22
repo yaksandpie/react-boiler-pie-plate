@@ -1,0 +1,114 @@
+// Import vendor Eric Meyer's CSS reset v2
+@import 'vendor/reset';
+
+// Just something to look at when you ramp up a project!
+// Nothing here is functional to the boiler-pie-plate
+// Srsly, delete all of this unless you want to keep some moving balls.
+
+body {
+  background: black;
+}
+
+.balls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.ball {
+  position: relative;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  background: white;
+
+  & + & {
+    margin-left: 5vh;
+  }
+}
+
+.ball-letter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 5vh;
+  color: white;
+}
+
+@keyframes going-up {
+  0% {
+    transform: translateY(-200%);
+  }
+  50% {
+    transform: translateY(200%);
+  }
+  100% {
+    transform: translateY(-200%);
+  }
+}
+
+@keyframes going-down {
+  0% {
+    transform: translateY(-200%);
+  }
+  50% {
+    transform: translateY(200%);
+  }
+  100% {
+    transform: translateY(-200%);
+  }
+}
+
+$balls: (
+  1: (
+    color: #f7cac9,
+    duration: 1000ms
+  ),
+  2: (
+    color: #f7786b,
+    duration: 1100ms
+  ),
+  3: (
+    color: #91a8d0,
+    duration: 1300ms
+  ),
+  4: (
+    color: #034f84,
+    duration: 1700ms
+  ),
+  5: (
+    color: #fae03c,
+    duration: 1800ms
+  ),
+  6: (
+    color: #98ddde,
+    duration: 1100ms
+  ),
+  7: (
+    color: #9896a4,
+    duration: 1600ms
+  ),
+  8: (
+    color: #dd4132,
+    duration: 1400ms
+  ),
+  9: (
+    color: #b18f6a,
+    duration: 1200ms
+  ),
+  10: (
+    color: #79c753,
+    duration: 1000ms
+  )
+);
+
+@each $item, $setting in $balls {
+  $animation-name: if($item % 2 == 0, going-up, going-down);
+
+  .ball:nth-child(#{$item}) {
+    background: map-get($setting, color);
+    animation: $animation-name map-get($setting, duration) infinite ease-in-out;
+  }
+}

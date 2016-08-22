@@ -1,0 +1,47 @@
+{
+  "name": "yaks-react-boiler",
+  "version": "0.1.0",
+  "author": "Alex Miley <yaksandpie@gmail.com>",
+  "license": "MIT",
+  "description": "Another React/Webpack boilerplate/dev server with Sass -> PostCSS integration",
+  "homepage": "http://www.alexmiley.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yaksandpie/yaks-react-boiler"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install",
+    "start": "node server.js",
+    "package": "npm run clean && BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.production.js",
+    "destroy": "rm -rf dist && rm -rf node_modules",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.3.19",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.0",
+    "babel-core": "^6.3.21",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-react-transform": "^2.0.0-beta1",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "node-sass": "^3.8.0",
+    "postcss-loader": "^0.10.0",
+    "react-transform-hmr": "^1.0.1",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dashboard": "0.0.1",
+    "webpack-dev-server": "^1.8.0"
+  }
+}
