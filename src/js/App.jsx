@@ -4,15 +4,13 @@ import Styles from '../css/main';
 const createBallsByString = strArg => {
   let allTheBalls = [];
 
-  for(let letter of strArg) {
-    const index = strArg.split('').indexOf(letter);
-
+  strArg.split('').map((letter, index) => {
     allTheBalls.push(
       <div className="ball" key={index + letter}>
         <span className="ball-letter">{letter}</span>
       </div>
     );
-  }
+  });
 
   return allTheBalls;
 }
